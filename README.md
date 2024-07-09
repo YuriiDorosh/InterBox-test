@@ -32,11 +32,31 @@
 
 ### Завдання 1
 
+<div align="center">
+  <a href="https://github.com/YuriiDorosh/InterBox-test">
+    <img src="images/first.jpg" alt="Logo">
+  </a>
+</div>
+
 1. Перейдіть до папки `src/first_task`.
 2. Запустіть скрипт для отримання даних від API Rest Countries.
 3. Переконайтеся, що виведені дані включають назву країни, назву столиці та посилання на зображення прапору.
 
 ### Завдання 2
+
+<div align="center">
+  <a href="https://github.com/YuriiDorosh/InterBox-test">
+    <img src="images/second.jpg" alt="Logo">
+  </a>
+</div>
+
+<br>
+
+<div align="center">
+  <a href="https://github.com/YuriiDorosh/InterBox-test">
+    <img src="images/second_json.jpg" alt="Logo">
+  </a>
+</div>
 
 1. Перейдіть до папки `src/second_task`.
 2. Запустіть скрипт для збору даних зі сторінки Ebay.
