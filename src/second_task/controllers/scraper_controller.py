@@ -2,6 +2,7 @@ from repositories.product_repository import ProductRepository
 from services.ebay_scraper import EbayScraper
 import logging
 
+
 class ScraperController:
     def __init__(self, product_repository: ProductRepository):
         self.product_repository = product_repository

@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from typing import Union
 
+
 class Product(BaseModel):
     url: str
     name: str

@@ -5,16 +5,18 @@ from typing import List
 from models.product_model import Product
 import logging
 
+
 class ProductRepository:
-    def __init__(self,         
+    def __init__(
+        self,
         cache_duration: int,
         use_cache: bool,
         redis_host: str,
         redis_port: int,
         redis_db: int,
         redis_cache_key: str,
-        ) -> None:
-        
+    ) -> None:
+
         self.use_cache = use_cache
         self.cache_duration = cache_duration
         self.redis_client = redis.Redis(host=redis_host, port=redis_port, db=redis_db)
@@ -37,6 +39,6 @@ class ProductRepository:
         return page_content
 
     def save_products(self, products: List[Product], filename: str):
-        with open(filename, 'w') as file:
+        with open(filename, "w") as file:
             json.dump([product.dict() for product in products], file, indent=4)
         logging.info(f"Parsed data saved to {filename}")
