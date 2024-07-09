@@ -4,8 +4,18 @@ import json
 from typing import List
 from models.country_info import CountryInfo
 
+
 class CountryRepository:
-    def __init__(self, api_base_url: str, cache_duration: int, use_cache: bool, redis_host: str, redis_port: int, redis_db: int, redis_cache_key: str) -> None:
+    def __init__(
+        self,
+        api_base_url: str,
+        cache_duration: int,
+        use_cache: bool,
+        redis_host: str,
+        redis_port: int,
+        redis_db: int,
+        redis_cache_key: str,
+    ) -> None:
         self.api_base_url = api_base_url
         self.cache_duration = cache_duration
         self.use_cache = use_cache

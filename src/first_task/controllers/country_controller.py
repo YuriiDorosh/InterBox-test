@@ -1,6 +1,7 @@
 from services.country_service import CountryService
 from prettytable import PrettyTable
 
+
 class CountryController:
     def __init__(self, service: CountryService):
         self.service = service
