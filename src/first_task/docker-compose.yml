@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: country_info_app
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app
+    command: python main.py
+    depends_on:
+      - redis
+
+  redis:
+    image: "redis:alpine"
+    container_name: country_info_redis
+    ports:
+      - "6380:6379"
