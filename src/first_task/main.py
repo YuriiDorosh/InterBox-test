@@ -1,25 +1,27 @@
 import sys
-from typing import List
-from prettytable import PrettyTable
-from services import CountryAPI
-from models import CountryInfo
-from settings import USE_CACHE
+from repositories.country_repository import CountryRepository
+from services.country_service import CountryService
+from controllers.country_controller import CountryController
+from settings import Settings
 
+def main():
+    settings = Settings()
+    
+    if len(sys.argv) > 1 and sys.argv[1] == "--no-cache":
+        settings.USE_CACHE = False
 
-def display_data(countries: List[CountryInfo]) -> None:
-    table = PrettyTable()
-    table.field_names = ["Country Name", "Capital", "Flag URL"]
-
-    for country in countries:
-        table.add_row([country.name, country.capital, country.flag_url])
-
-    print(table)
-
+    repository = CountryRepository(
+        api_base_url=settings.API_BASE_URL,
+        cache_duration=settings.CACHE_DURATION,
+        use_cache=settings.USE_CACHE,
+        redis_host=settings.REDIS_HOST,
+        redis_port=settings.REDIS_PORT,
+        redis_db=settings.REDIS_DB,
+        redis_cache_key=settings.REDIS_CACHE_KEY
+    )
+    service = CountryService(repository)
+    controller = CountryController(service)
+    controller.display_data()
 
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == "--no-cache":
-        USE_CACHE = False
-
-    api = CountryAPI()
-    country_data = api.fetch_data()
-    display_data(country_data)
+    main()
