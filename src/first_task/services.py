@@ -5,7 +5,16 @@ import redis
 import json
 from typing import List
 from models import CountryInfo
-from settings import API_BASE_URL, CACHE_DURATION, USE_CACHE, REDIS_HOST, REDIS_PORT, REDIS_DB, REDIS_CACHE_KEY
+from settings import (
+    API_BASE_URL,
+    CACHE_DURATION,
+    USE_CACHE,
+    REDIS_HOST,
+    REDIS_PORT,
+    REDIS_DB,
+    REDIS_CACHE_KEY,
+)
+
 
 class CountryAPI:
     def __init__(self) -> None:
@@ -30,6 +39,10 @@ class CountryAPI:
             countries.append(CountryInfo(name, capital, flag_url))
 
         if USE_CACHE:
-            self.redis_client.setex(REDIS_CACHE_KEY, CACHE_DURATION, json.dumps([country.__dict__ for country in countries]))
+            self.redis_client.setex(
+                REDIS_CACHE_KEY,
+                CACHE_DURATION,
+                json.dumps([country.__dict__ for country in countries]),
+            )
 
         return countries

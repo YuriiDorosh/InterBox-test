@@ -5,6 +5,7 @@ from services import CountryAPI
 from models import CountryInfo
 from settings import USE_CACHE
 
+
 def display_data(countries: List[CountryInfo]) -> None:
     table = PrettyTable()
     table.field_names = ["Country Name", "Capital", "Flag URL"]
@@ -14,8 +15,9 @@ def display_data(countries: List[CountryInfo]) -> None:
 
     print(table)
 
+
 if __name__ == "__main__":
-    if len(sys.argv) > 1 and sys.argv[1] == '--no-cache':
+    if len(sys.argv) > 1 and sys.argv[1] == "--no-cache":
         USE_CACHE = False
 
     api = CountryAPI()
